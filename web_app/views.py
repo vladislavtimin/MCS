@@ -1,8 +1,9 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from web_app.models import Category,Item
+from web_app.models import Category, Item
 from web_app.serializers import CategoryListSerializer, CategorySerializer, ItemListSerializer, ItemSerializer
+
 
 @api_view(['GET'])
 def categories_list(request):
@@ -22,9 +23,6 @@ def category_detail(request, pk):
     if request.method == 'GET':
         serializer = CategorySerializer(category)
         print(serializer.data['items'])
-        for item in serializer.data['items']:
-            if 'description' in item.keys():
-                del item['description']
         return Response(serializer.data['items'])
 
 
