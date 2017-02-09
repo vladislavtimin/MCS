@@ -1,4 +1,4 @@
-from web_app.models import Category,Item
+from web_app.models import Category,Item,Comment
 from rest_framework import serializers
 
 
@@ -24,4 +24,10 @@ class ItemListSerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
+        fields = '__all__'
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
         fields = '__all__'

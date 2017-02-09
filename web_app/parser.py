@@ -1,4 +1,6 @@
 import urllib.request
+
+import time
 from bs4 import BeautifulSoup
 
 
@@ -68,14 +70,15 @@ def parse(html):
 
 
 def main():
-    list_of_categories = []
-    for category in (get_categories(get_html(BASE_URL + '/ru_ru/muzhchiny/vybrat-kategoriyu/extended-sizes.html'))):
-        list_of_categories.append(category[1])
+    print('lala')
+    #list_of_categories = []
+    #for category in (get_categories(get_html(BASE_URL + '/ru_ru/muzhchiny/vybrat-kategoriyu/extended-sizes.html'))):
+    #    list_of_categories.append(category[1])
     list_of_clothes = (parse(get_html(BASE_URL + '/ru_ru/muzhchiny/vybrat-kategoriyu/extended-sizes.html')))
     #print(list_of_categories)
     #for item in list_of_clothes[7][list_of_categories[7]][1]:
     #    print(item)
-    return list_of_categories, list_of_clothes
+    #return list_of_categories, list_of_clothes
 
 if __name__ == '__main__':
     main()

@@ -23,3 +23,7 @@ class Item(models.Model):
     price = models.IntegerField()
 
 
+class Comment(models.Model):
+    item = models.ForeignKey(Item, related_name='comments')
+    addition_date = models.PositiveIntegerField()
+    text = models.CharField(max_length=256)
