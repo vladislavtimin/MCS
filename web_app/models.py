@@ -24,6 +24,7 @@ class Item(models.Model):
 
 
 class Comment(models.Model):
+    author_name = models.CharField(max_length=30)
     item = models.ForeignKey(Item, related_name='comments')
     addition_date = models.PositiveIntegerField()
     text = models.CharField(max_length=256)

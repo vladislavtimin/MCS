@@ -35,18 +35,6 @@ def items_list(request):
         return Response(serializer.data)
 
 
-@api_view(['GET'])
-def item_detail(request, pk):
-    try:
-        item = Item.objects.get(pk=pk)
-    except Item.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = ItemSerializer(item)
-        return Response(serializer.data)
-
-
 @api_view(['GET','POST'])
 def comment_detail(request, pk):
     try:
@@ -65,7 +53,6 @@ def comment_detail(request, pk):
         })
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
-            #comment = item.comments.create(addition_date=int(time.time()),text=)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
